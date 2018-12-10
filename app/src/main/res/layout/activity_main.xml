@@ -4,31 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:background="#00ff33"
+    tools:targetApi="N"
+    tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="331dp"
-        android:layout_height="274dp"
+        android:id="@+id/imageView"
+        android:layout_width="480dp"
+        android:layout_height="160dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="170dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="123dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="171dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="169dp"
         android:foregroundGravity="center"
         android:scaleType="center"
-        android:visibility="visible"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498"
-        app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteX="175dp"
-        tools:layout_editor_absoluteY="224dp"/>
+        app:layout_constraintVertical_bias="0.498" />
+
 </RelativeLayout>
