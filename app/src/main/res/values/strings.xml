@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">FoodSavior</string>
     <string name="motto">\"Food are meant for sharing and not for wasting\"</string>
+    <string name="reminder_2_title">Add New Reminder: </string>
+    <string name="food_category">Food Category: </string>
+    <string name="food_name">Food Name: </string>
+    <string name="expiry_date">Expiry Date: </string>
+    <string name="remind_at">Remind At: </string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
 </resources>
