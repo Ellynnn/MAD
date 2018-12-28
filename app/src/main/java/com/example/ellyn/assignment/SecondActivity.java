@@ -14,10 +14,12 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
+        if (savedInstanceState == null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+        }
+
         BottomNavigationView bottomNavi = findViewById(R.id.bottom_navigation);
         bottomNavi.setOnNavigationItemSelectedListener(naviListener);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener naviListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -52,3 +54,4 @@ public class SecondActivity extends AppCompatActivity {
         }
     };
 }
+
