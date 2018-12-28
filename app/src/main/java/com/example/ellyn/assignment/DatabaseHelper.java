@@ -1,43 +1,62 @@
 package com.example.ellyn.assignment;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper{
 
-    public static final String DATABASE_NAME = "foodsavior.db";
-    public static final String TABLE1_NAME = "reminder_table";
-    public static final String TABLE1_COL1 = "REMINDER_ID";
-    public static final String TABLE1_COL2 = "CATEGORY";
-    public static final String TABLE1_COL3 = "NAME";
-    public static final String TABLE1_COL4 = "EXPIRY_DATE";
-    public static final String TABLE1_COL5 = "REMIND_AT";
-    public static final String TABLE1_COL6 = "USER ID";
-    public static final String TABLE2_NAME = "user_table";
-    public static final String TABLE2_COL1 = "USER_ID";
-    public static final String TABLE2_COL2 = "NAME";
-    public static final String TABLE2_COL3 = "USERNAME";
-    public static final String TABLE2_COL4 = "PHONE";
-    public static final String TABLE2_COL5 = "EMAIL";
-    public static final String TABLE2_COL6 = "PASSWORD";
+    private static final String DB_NAME = "FoodSaviorDatabase";
+    private static final int DB_VERSION = 1;
 
+    public DatabaseHelper(Context context){
+        super(context, DB_NAME, null, DB_VERSION);
 
-    public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
-        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE1_NAME + "(TABLE1_COL1 INTEGER PRIMARY KEY AUTOINCREMENT, TABLE1_COL2 TEXT, TABLE1_COL3 TEXT, TABLE1_COL4 DATE, TABLE1_COL5 DATE, TABLE1_COL6 INTEGER NOT NULL, FOREIGN KEY("+TABLE2_COL1+") REFERENCES "+TABLE2_NAME+"("+TABLE2_COL1+"))");
-        db.execSQL("create table " + TABLE2_NAME + "(TABLE2_COL1 INTEGER PRIMARY KEY AUTOINCREMENT, TABLE2_COL2 TEXT, TABLE3_COL3 TEXT, TABLE2_COL4 INTEGER, TABLE2_COL5 TEXT, TABLE2_COL6 TEXT)");
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        String sqlUser = "CREATE TABLE user(id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, username VARCHAR, phone VARCHAR, email VARCHAR, password VARCHAR)";
+        String sqlReminder = "CREATE TABLE reminder(id INTEGER PRIMARY KEY AUTOINCREMENT, category VARCHAR, name VARCHAR, expiry_date DATE, remind_at DATE, user_id INTEGER, FOREIGN KEY(user_id) REFERENCES user(id))";
+
+        sqLiteDatabase.execSQL(sqlUser);
+        sqLiteDatabase.execSQL(sqlReminder);
+    }
+
+    public boolean addUser(String name, String username, String phone, String email, String password) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues UserContentValues = new ContentValues();
+        UserContentValues.put("name", name);
+        UserContentValues.put("username", username);
+        UserContentValues.put("phone", phone);
+        UserContentValues.put("email", email);
+        UserContentValues.put("password", password);
+        db.insert("user", null, UserContentValues);
+        db.close();
+        return true;
+    }
+
+    public boolean addReminder(String category, String name, String expiry_date, String remind_at) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues ReminderContentValues = new ContentValues();
+        ReminderContentValues.put("name", category);
+        ReminderContentValues.put("username", name);
+        ReminderContentValues.put("phone", expiry_date);
+        ReminderContentValues.put("email", remind_at);
+        db.insert("reminder", null, ReminderContentValues);
+        db.close();
+        return true;
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table if exists " + TABLE1_NAME);
-        db.execSQL("drop table if exists " + TABLE2_NAME);
-        onCreate(db);
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        String sqlUser = "DROP TABLE IF EXISTS user";
+        String sqlReminder = "DROP TABLE IF EXISTS reminder";
+
+        sqLiteDatabase.execSQL(sqlUser);
+        sqLiteDatabase.execSQL(sqlReminder);
+
+        onCreate(sqLiteDatabase);
     }
 }
