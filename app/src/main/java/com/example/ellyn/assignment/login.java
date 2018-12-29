@@ -17,15 +17,12 @@ import android.widget.Toast;
 
 public class login extends AppCompatActivity {
 
-    private static final String TAG = "Login";
-    private static final int REQUEST_SIGNUP = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
     }
+
 }
