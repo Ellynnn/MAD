@@ -115,7 +115,8 @@ public class Reminder2Fragment extends Fragment {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addReminder();
+                    addReminder();
+                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReminderFragment()).commit();
             }
         });
 
