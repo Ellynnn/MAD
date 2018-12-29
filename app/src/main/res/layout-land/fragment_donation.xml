@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="10"
+    tools:context="com.example.ellyn.assignment.MainActivity">
+
+    <TextView
+        android:id="@+id/donation_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/donation_title"
+        android:textSize="25sp"
+        app:layout_constraintVertical_bias="0.156" />
+
+    <TextView
+        android:id="@+id/food_donation_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/donation_title"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="71dp"
+        android:text="@string/food_donation_name"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/enter_food_donation_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/food_donation_name"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="69dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/donation_title"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="110dp"
+        android:text="@string/quantity"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="177dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/quantity"
+        android:layout_alignEnd="@+id/enter_food_donation_name"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="97dp"
+        android:layout_marginEnd="0dp"
+        android:ems="10"
+        android:inputType="number" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="183dp" />
+
+    <Button
+        android:id="@+id/btnCamera"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/quantity"
+        android:layout_alignEnd="@+id/donation_title"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="-146dp"
+        android:background="@drawable/ic_camera_enhance_black_24dp" />
+
+    <TextView
+        android:id="@+id/take_pic"
+        android:layout_width="112dp"
+        android:layout_height="30dp"
+        android:layout_alignBaseline="@+id/btnCamera"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="216dp"
+        android:text="@string/take_picture"
+        android:textSize="20sp" />
+
+</RelativeLayout>
