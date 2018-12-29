@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -41,6 +42,30 @@ public class Reminder2Fragment extends Fragment {
             }
         });
 
+        selectExpiryDate = view.findViewById(R.id.reminder2expirydatebutton);
+        expiryDate = view.findViewById(R.id.reminder2selectexpirydate);
+
+        selectExpiryDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                int c_year = c.get(Calendar.YEAR);
+                int c_month = c.get(Calendar.MONTH);
+                final int c_day = c.get(Calendar.DAY_OF_MONTH);
+
+                datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        c.set(year, month, dayOfMonth);
+                        String date = new SimpleDateFormat("dd/MM/yyyy").format(c.getTime());
+                        expiryDate.setText(date);
+                        //expiryDate.setText(c_day + "/" + (c_month + 1 ) + "/" + c_year);
+                    }
+                }, c_year, c_month, c_day);
+                datePickerDialog.show();
+            }
+        });
+
         categorySpinner = view.findViewById(R.id.reminder2categoryspinner);
         ArrayList<String> categoryList = new ArrayList<>();
         categoryList.add("Choose a category");
@@ -62,26 +87,6 @@ public class Reminder2Fragment extends Fragment {
         final ArrayAdapter<String> remindAtAdapter = new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item, remindAtList);
         remindAtSpinner.setAdapter(remindAtAdapter);
 
-        selectExpiryDate = view.findViewById(R.id.reminder2expirydatebutton);
-        expiryDate = view.findViewById(R.id.reminder2selectexpirydate);
-
-        selectExpiryDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar calendar = Calendar.getInstance();
-                final int year = calendar.get(Calendar.YEAR);
-                final int month = calendar.get(Calendar.MONTH);
-                final int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-                datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        expiryDate.setText(day + "/" + (month + 1 ) + "/" + year);
-                    }
-                }, year, month, day);
-                datePickerDialog.show();
-            }
-        });
 
         foodName = view.findViewById(R.id.reminder2entername);
 
