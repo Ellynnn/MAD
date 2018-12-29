@@ -37,6 +37,20 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return true;
     }
 
+    //public boolean modifyUser(int id, String name, String username, String phone, String email, String password) {
+    //    SQLiteDatabase db = getWritableDatabase();
+    //    ContentValues UserContentValues = new ContentValues();
+    //    UserContentValues.put("name", name);
+    //    UserContentValues.put("username", username);
+    //    UserContentValues.put("phone", phone);
+    //    UserContentValues.put("email", email);
+    //    UserContentValues.put("password", password);
+    //    db.update("user", UserContentValues, "user_id=" + id, null);
+    //    //db.insert("user", null, UserContentValues);
+    //    db.close();
+    //    return true;
+    //}
+
     public boolean addReminder(String category, String name, String expiry_date, String remind_at) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues ReminderContentValues = new ContentValues();
