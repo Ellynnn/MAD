@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +14,18 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Reminder2Fragment extends Fragment {
+
+    DatabaseReference databaseReminder;
 
     Button selectExpiryDate;
     TextView expiryDate;
@@ -27,6 +34,7 @@ public class Reminder2Fragment extends Fragment {
     Spinner remindAtSpinner;
     Button clearButton;
     EditText foodName;
+    Button confirmButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,6 +49,8 @@ public class Reminder2Fragment extends Fragment {
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReminderFragment()).commit();
             }
         });
+
+        databaseReminder = FirebaseDatabase.getInstance().getReference("reminder");
 
         selectExpiryDate = view.findViewById(R.id.reminder2expirydatebutton);
         expiryDate = view.findViewById(R.id.reminder2selectexpirydate);
@@ -95,9 +105,17 @@ public class Reminder2Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 expiryDate.setText(R.string.select_expiry_date);
-                foodName.setText(R.string.food_name_hint);
+                foodName.getText().clear();
                 categorySpinner.setSelection(0);
                 remindAtSpinner.setSelection(0);
+            }
+        });
+
+        confirmButton = view.findViewById(R.id.reminder2confirmbutton);
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addReminder();
             }
         });
 
@@ -105,5 +123,19 @@ public class Reminder2Fragment extends Fragment {
 
     }
 
+    private void addReminder() {
+        String foodCategory = categorySpinner.getSelectedItem().toString();
+        String name = foodName.getText().toString().trim();
+        String expiry_date = expiryDate.getText().toString();
+        String remind_at = remindAtSpinner.getSelectedItem().toString();
+        String id = databaseReminder.push().getKey();
+        Reminder reminder = new Reminder(id, foodCategory, name, expiry_date, remind_at);
+
+        databaseReminder.child(id).setValue(reminder);
+    }
+
+    private void addUser(){
+        //
+    }
 }
 
