@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="81dp"
+    android:isScrollContainer="false">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true">
+
+    <TextView
+        android:id="@+id/reminder2title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reminder_2_title"
+        android:layout_margin="15dp"
+        android:textSize="25dp"/>
+
+    <RelativeLayout
+        android:id="@+id/reminder2categoryset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reminder2title"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/reminder2category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_margin="15dp"
+            android:text="@string/food_category"
+            android:textSize="20dp"/>
+
+        <Spinner
+            android:id="@+id/reminder2categoryspinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/reminder2category"
+            android:layout_margin="15dp"
+            android:layout_alignBaseline="@id/reminder2category"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/reminder2nameset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/reminder2categoryset">
+
+        <TextView
+            android:id="@+id/reminder2name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_margin="15dp"
+            android:text="@string/food_name"/>
+
+        <EditText
+            android:id="@+id/reminder2entername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/food_name_hint"
+            android:layout_toRightOf="@id/reminder2name"
+            android:layout_margin="15dp"
+            android:textSize="20dp"
+            android:layout_alignBaseline="@id/reminder2name"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/reminder2expirydateset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/reminder2nameset">
+
+        <TextView
+            android:id="@+id/reminder2expirydate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/expiry_date"
+            android:layout_margin="15dp"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/reminder2selectexpirydate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_expiry_date"
+            android:layout_toRightOf="@id/reminder2expirydate"
+            android:layout_margin="15dp"
+            android:textSize="20dp"/>
+
+        <Button
+            android:id="@+id/reminder2expirydatebutton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_date_range_black_24dp"
+            android:layout_toRightOf="@id/reminder2selectexpirydate"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/reminder2remindatset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reminder2expirydateset"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/reminder2remindat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remind_at"
+            android:textSize="20dp"
+            android:layout_margin="15dp"/>
+
+        <Spinner
+            android:id="@+id/reminder2remindatspinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/reminder2remindat"
+            android:layout_margin="15dp"
+            android:layout_alignBaseline="@id/reminder2remindat" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/reminder2buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reminder2remindatset"
+        android:layout_centerInParent="true"
+        android:layout_margin="15dp">
+
+        <Button
+            android:id="@+id/reminder2clearbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_button"
+            android:textSize="15dp"
+            android:layout_toLeftOf="@id/reminder2confirmbutton"/>
+
+        <Button
+            android:id="@+id/reminder2confirmbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:text="@string/confirm"
+            android:textSize="15dp"
+            android:layout_margin="10dp"
+            android:layout_centerInParent="true"/>
+
+        <Button
+            android:id="@+id/reminder2cancelbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/reminder2confirmbutton"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="#48FC9A"
+            android:text="@string/cancel"
+            android:textSize="15dp"
+            android:layout_margin="10dp"/>
+
+    </RelativeLayout>
+</RelativeLayout>
+</ScrollView>
