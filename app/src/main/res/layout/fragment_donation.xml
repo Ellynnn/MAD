@@ -100,7 +100,7 @@
         android:ems="10"
         android:inputType="number"
         android:layout_marginBottom="15dp"
-        android:layout_marginLeft="54dp"
+        android:layout_marginLeft="55dp"
         android:textSize="15sp" />
         </RelativeLayout>
 
@@ -115,7 +115,7 @@
             android:id="@+id/take_pic"
             android:layout_width="112dp"
             android:layout_height="30dp"
-            android:layout_alignBaseline="@+id/btnCamera"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="117dp"
             android:text="@string/take_picture"
             android:textSize="20sp" />
@@ -123,7 +123,7 @@
         <Button
             android:id="@+id/btnCamera"
             android:layout_width="40dp"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_toEndOf="@id/take_pic"
             android:background="@drawable/ic_camera_enhance_black_24dp" />
 
@@ -148,11 +148,12 @@
                 android:id="@+id/donation_clear_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/clear"
-                android:layout_margin="10dp"
                 android:background="@drawable/rounded_button"
-                android:textSize="15sp"
-                android:layout_toLeftOf="@id/donation_confirm_btn"/>
+                android:text="@string/clear"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="70dp"
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/donation_confirm_btn"
@@ -161,20 +162,9 @@
                 android:background="@drawable/rounded_button"
                 android:text="@string/confirm"
                 android:textSize="15sp"
-                android:layout_margin="10dp"
-                android:layout_centerInParent="true"/>
-
-            <Button
-                android:id="@+id/donation_cancel_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@id/donation_confirm_btn"
-                android:background="@drawable/rounded_button"
-                android:backgroundTint="#48FC9A"
-                android:text="@string/cancel"
-                android:textSize="15sp"
-                android:layout_margin="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="195dp"/>
 
         </RelativeLayout>
 

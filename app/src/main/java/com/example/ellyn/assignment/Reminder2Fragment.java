@@ -152,8 +152,8 @@ public class Reminder2Fragment extends Fragment {
         databaseReminder.child(id).setValue(reminder);
     }
 
-    private void addUser(){
+    //private void addUser(){
         //
-    }
+   // }
 }
 
