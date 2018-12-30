@@ -43,7 +43,7 @@ public class Reminder2Fragment extends Fragment {
         if(container==null) {
             return inflater.inflate(R.layout.fragment_reminder2, container, false);
         }
-        View view =   inflater.inflate(R.layout.fragment_reminder2,container,false);
+        View view = inflater.inflate(R.layout.fragment_reminder2,container,false);
 
         Button cancelButton = view.findViewById(R.id.reminder2cancelbutton);
         clearButton = view.findViewById(R.id.reminder2clearbutton);
