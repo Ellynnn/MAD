@@ -40,6 +40,9 @@ public class ReminderFragment extends Fragment {
         reminderFloatingActionButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+
+                getFragmentManager().beginTransaction().add(R.id.fragment_container, new Reminder2Fragment()).commit();
+
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, new Reminder2Fragment()).commit();
             }
         });
