@@ -1,4 +1,4 @@
-package com.example.ellyn.assignment;
+ package com.example.ellyn.assignment;
 
 public class ReminderList {
     private String foodName;
@@ -26,14 +26,14 @@ public class ReminderList {
     }
 
     public void setFoodCategory(String foodCategory) {
-        this.foodCategory = foodCategory;
+       this.foodCategory = foodCategory;
     }
 
     public String getExpiryDate() {
-        return expiryDate;
+       return expiryDate;
     }
 
     public void setExpiryDate(String expiryDate) {
-        this.expiryDate = expiryDate;
-    }
+       this.expiryDate = expiryDate;
+   }
 }

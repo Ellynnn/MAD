@@ -1,5 +1,8 @@
 package com.example.ellyn.assignment;
 
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -16,10 +19,15 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class ReminderFragment extends Fragment {
 
     private RecyclerView reminderList;
     private DatabaseReference databaseReminder;
+    private LinearLayoutManager reminderLayoutManager;
 
     @Nullable
     @Override
@@ -58,6 +66,13 @@ public class ReminderFragment extends Fragment {
             }
         };
 
+        reminderList.setAdapter(FirebaseRecyclerAdapter);
+
+        reminderLayoutManager = new LinearLayoutManager(getActivity());
+        reminderLayoutManager.setReverseLayout(true);
+        reminderLayoutManager.setStackFromEnd(true);
+
+        reminderList.setLayoutManager(reminderLayoutManager);
         reminderList.setAdapter(FirebaseRecyclerAdapter);
 
     }
