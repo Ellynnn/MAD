@@ -32,6 +32,7 @@ public class login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
@@ -40,10 +41,6 @@ public class login extends AppCompatActivity {
             startActivity(new Intent(login.this, SecondActivity.class));
             finish();
         }
-
-        // set the view now
-        setContentView(R.layout.activity_login);
-
 
         // Locate the button in activity_login.xml
         inputEmail = (EditText) findViewById(R.id.EditEmail);
