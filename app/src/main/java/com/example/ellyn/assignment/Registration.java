@@ -2,6 +2,7 @@ package com.example.ellyn.assignment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,7 +11,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
@@ -18,7 +22,8 @@ public class Registration extends AppCompatActivity {
     private EditText inputrfullname, inputruserid, inputrphoneno , inputremail, inputrpassword;
     private Button  btnregister, btnlinklogin;
     private ProgressBar progressBar;
-    private FirebaseDatabase firebaseDatabase;
+    private FirebaseAuth auth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +31,7 @@ public class Registration extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         //Get Firebase auth instance
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         btnregister = (Button) findViewById(R.id.btn_register);
         inputrfullname = (EditText) findViewById(R.id.rEditname);
@@ -86,12 +91,31 @@ public class Registration extends AppCompatActivity {
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
+                //create user
+                auth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(Registration.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                Toast.makeText(Registration.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+                                // If sign in fails, display a message to the user. If sign in succeeds
+                                // the auth state listener will be notified and logic to handle the
+                                // signed in user can be handled in the listener.
+                                if (!task.isSuccessful()) {
+                                    Toast.makeText(Registration.this, "Authentication failed." + task.getException(),
+                                            Toast.LENGTH_SHORT).show();
+                                } else {
+                                    startActivity(new Intent(Registration.this, SecondActivity.class));
+                                    finish();
+                                }
+                            }
+                        });
+
 
 
             }
         });
     }
-
     @Override
     protected void onResume() {
         super.onResume();
