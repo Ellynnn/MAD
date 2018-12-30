@@ -9,7 +9,7 @@
     android:paddingTop="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
-    tools:context=".HomeFragment"
+    tools:context="com.example.ellyn.assignment.HomeFragment"
     android:background="@color/colorBG">
 
     <android.support.constraint.Guideline
