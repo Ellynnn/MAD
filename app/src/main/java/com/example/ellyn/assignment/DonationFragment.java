@@ -1,5 +1,7 @@
 package com.example.ellyn.assignment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -15,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -28,6 +31,7 @@ public class DonationFragment extends Fragment {
     Button clearButton;
     EditText foodName;
     EditText foodQty;
+    Button confirmButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
@@ -66,12 +70,41 @@ public class DonationFragment extends Fragment {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                foodName.setText(R.string.food_name_hint);
-                foodQty.setText(R.string.food_qty_hint);
+                foodName.getText().clear();
+                foodQty.getText().clear();
                 categorySpinner.setSelection(0);
                 imageView.setImageBitmap(null);
             }
         });
+
+        confirmButton = view.findViewById(R.id.donation_confirm_btn);
+        confirmButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if (foodName.getText().toString().matches("") || categorySpinner.getSelectedItemPosition() == 0 || foodQty.getText().toString().matches("") ){
+                    AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
+                    alertBuilder.setMessage("Please fill in the blanks!").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    AlertDialog alert = alertBuilder.create();
+                    alert.setTitle("Error!");
+                    alert.show();
+                }
+
+                else{
+                    final Toast toast = Toast.makeText( getActivity(), "Thank you for your donation!! We have receive your request. " +
+                            "Please send it to the nearby centre.", Toast.LENGTH_LONG);
+                    toast.show();
+
+                    foodName.getText().clear();
+                    foodQty.getText().clear();
+                    categorySpinner.setSelection(0);
+                    imageView.setImageBitmap(null);
+                    }
+            }});
 
         return view;
 
@@ -83,6 +116,5 @@ public class DonationFragment extends Fragment {
         Bitmap bitmap = (Bitmap)data.getExtras().get("data");
         imageView.setImageBitmap(bitmap);
     }
-
 
 }
