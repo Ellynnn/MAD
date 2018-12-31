@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class ViewHolder extends RecyclerView.ViewHolder {
 
-    View rview;
+    private View rview;
 
     public ViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -26,4 +26,5 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         rFoodCategory.setText(category);
         rFoodExpiryDate.setText(expirydate);
     }
+
 }

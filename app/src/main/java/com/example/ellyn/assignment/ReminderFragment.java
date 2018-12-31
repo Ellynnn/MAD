@@ -14,6 +14,8 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.List;
+
 
 public class ReminderFragment extends Fragment {
 
@@ -55,8 +57,8 @@ public class ReminderFragment extends Fragment {
             protected void populateViewHolder(ViewHolder viewHolder, ReminderList reminderList, int position) {
 
                 viewHolder.setDetails(getActivity().getApplicationContext(), reminderList.getFoodName(), reminderList.getFoodCategory(), reminderList.getExpiryDate());
-
             }
+
         };
 
         rRecyclerView.setAdapter(firebaseRecyclerAdapter);
@@ -67,6 +69,7 @@ public class ReminderFragment extends Fragment {
 
         rRecyclerView.setLayoutManager(reminderLayoutManager);
         rRecyclerView.setAdapter(firebaseRecyclerAdapter);
+
     }
 
 }
