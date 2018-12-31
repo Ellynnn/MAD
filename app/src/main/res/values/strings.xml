@@ -29,4 +29,6 @@
     <string name="login">LOGIN</string>
     <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
     <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="register">REGISTER</string>
 </resources>
