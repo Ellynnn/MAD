@@ -8,6 +8,7 @@
     <string name="remind_at">Remind At: </string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
     <string name="welcome">WELCOME TO FOOD SAVIOR!</string>
     <string name="user_id">User ID</string>
     <string name="phone_number">Phone Number</string>
