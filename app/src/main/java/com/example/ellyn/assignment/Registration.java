@@ -15,15 +15,19 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.IgnoreExtraProperties;
+
+import java.util.HashMap;
 
 @IgnoreExtraProperties
 public class Registration extends AppCompatActivity {
-    private EditText inputrfullname, inputruserid, inputrphoneno , inputremail, inputrpassword;
+    private EditText inputrfullname, inputrusername, inputrphoneno , inputremail, inputrpassword;
     private Button  btnregister, btnlinklogin;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
-
+    private DatabaseReference databaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +36,11 @@ public class Registration extends AppCompatActivity {
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
+        databaseUser = FirebaseDatabase.getInstance().getReference("users");
 
         btnregister = (Button) findViewById(R.id.btn_register);
         inputrfullname = (EditText) findViewById(R.id.rEditname);
-        inputruserid = (EditText) findViewById(R.id.rEdituserid);
+        inputrusername = (EditText) findViewById(R.id.rEditusername);
         inputrphoneno = (EditText) findViewById(R.id.rEditphoneno);
         inputremail = (EditText) findViewById(R.id.rEditEmail);
         inputrpassword = (EditText) findViewById(R.id.rEditPassword);
@@ -56,7 +61,7 @@ public class Registration extends AppCompatActivity {
             public void onClick(View v) {
 
                 String fullname = inputrfullname.getText().toString().trim();
-                String userid = inputruserid.getText().toString().trim();
+                String username = inputrusername.getText().toString().trim();
                 String phoneno = inputrphoneno.getText().toString().trim();
                 String email = inputremail.getText().toString().trim();
                 String password = inputrpassword.getText().toString().trim();
@@ -65,7 +70,7 @@ public class Registration extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Enter full name!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (TextUtils.isEmpty(userid)) {
+                if (TextUtils.isEmpty(username)) {
                     Toast.makeText(getApplicationContext(), "Enter user ID!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -90,6 +95,7 @@ public class Registration extends AppCompatActivity {
                     return;
                 }
 
+
                 progressBar.setVisibility(View.VISIBLE);
                 //create user
                 auth.createUserWithEmailAndPassword(email, password)
@@ -98,6 +104,7 @@ public class Registration extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 Toast.makeText(Registration.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
+                                addUser();
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
                                 // signed in user can be handled in the listener.
@@ -111,8 +118,6 @@ public class Registration extends AppCompatActivity {
                             }
                         });
 
-
-
             }
         });
     }
@@ -122,4 +127,16 @@ public class Registration extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
     }
 
+    private void addUser(){
+
+        String full_name = inputrfullname.getText().toString().trim();
+        String user_name = inputrusername.getText().toString().trim();
+        String phone_no = inputrphoneno.getText().toString().trim();
+        String email = inputremail.getText().toString().trim();
+        String password = inputrpassword.getText().toString().trim();
+        String id = auth.getCurrentUser().getUid();
+        User user = new User(id, full_name, user_name, phone_no, email, password);
+
+        databaseUser.child(id).setValue(user);
+    }
 }
