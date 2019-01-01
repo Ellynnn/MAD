@@ -87,12 +87,11 @@ public class login extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                                 if (!task.isSuccessful()) {
                                     // there was an error
-                                    if (password.length() < 6) {
-                                        inputPassword.setError(getString(R.string.minimum_password));
-                                    } else {
+
                                         Toast.makeText(login.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
-                                    }
-                                } else {
+
+                                }
+                                else {
                                     Intent intent = new Intent(login.this, SecondActivity.class);
                                     startActivity(intent);
                                     finish();
