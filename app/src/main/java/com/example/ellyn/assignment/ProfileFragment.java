@@ -1,19 +1,16 @@
 package com.example.ellyn.assignment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,17 +22,18 @@ public class ProfileFragment extends Fragment {
     TextView name, username, phone, email, pwd;
     Button editProfile;
     Button signOut;
-    FirebaseUser firebaseUser;
-    String userID;
+    String currentUserID;
+    FirebaseAuth mFireAuth;
+    DatabaseReference profileUserRef;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-        SharedPreferences prefs = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
-        userID = prefs.getString("userID", "none");
+        mFireAuth = FirebaseAuth.getInstance();
+        currentUserID = mFireAuth.getCurrentUser().getUid();
+        profileUserRef = FirebaseDatabase.getInstance().getReference().child("users").child(currentUserID);
 
         name = view.findViewById(R.id.name);
         username = view.findViewById(R.id.username);
@@ -43,18 +41,43 @@ public class ProfileFragment extends Fragment {
         email = view.findViewById(R.id.email);
         pwd = view.findViewById(R.id.pwd);
 
-        userInfo();
+        profileUserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
+                    String myName = dataSnapshot.child("name").getValue().toString();
+                    String myUserName = dataSnapshot.child("username").getValue().toString();
+                    String myPhone = dataSnapshot.child("phone").getValue().toString();
+                    String myEmail = dataSnapshot.child("email").getValue().toString();
+                    String myPassword = dataSnapshot.child("password").getValue().toString();
 
-        //editProfile.setOnClickListener(new View.OnClickListener(){
-            //@Override
-            //public void onClick(View view) {
-                //String btn = editProfile.getText().toString();
+                    name.setText(myName) ;
+                    username.setText(myUserName);
+                    phone.setText(myPhone);
+                    email.setText(myEmail);
+                    pwd.setText(myPassword);
 
-                //if (btn.equals("Edit Profile")){
+                }
 
-                //}
-            //}
-        //});
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+        editProfile = view.findViewById(R.id.btnEdit);
+        editProfile.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                String btn = editProfile.getText().toString();
+
+                if (btn.equals("Edit Profile")){
+
+                }
+            }
+        });
+
         signOut = view.findViewById(R.id.btnSignOut);
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,29 +91,5 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
-    private void userInfo(){
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(userID);
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (getContext() == null){
-                    return;
-                }
-
-                //User user = dataSnapshot.getValue(User.class);
-
-                //name.setText(user.);
-                //username.setText(user.getUsername());
-               // phone.setText(user.getPhone());
-                //email.setText(user.getEmail());
-                //pwd.setText(user.getPassword());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 
 }
