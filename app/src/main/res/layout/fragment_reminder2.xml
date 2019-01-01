@@ -39,7 +39,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/reminder2category"
-                android:layout_margin="15dp"/>
+                android:layout_margin="15dp"
+                android:layout_alignBaseline="@id/reminder2category"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -123,7 +124,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/reminder2remindat"
-                android:layout_margin="15dp" />
+                android:layout_margin="15dp"
+                android:layout_alignBaseline="@id/reminder2remindat"/>
         </RelativeLayout>
 
         <RelativeLayout

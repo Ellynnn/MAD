@@ -1,11 +1,13 @@
 package com.example.ellyn.assignment;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.List;
+
 
 
 public class ReminderFragment extends Fragment {
@@ -52,7 +54,7 @@ public class ReminderFragment extends Fragment {
     @Override
     public void onStart(){
         super.onStart();
-        FirebaseRecyclerAdapter<ReminderList, ViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<ReminderList, ViewHolder>(ReminderList.class, R.layout.cardview, ViewHolder.class, rDatabaseReference) {
+        final FirebaseRecyclerAdapter<ReminderList, ViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<ReminderList, ViewHolder>(ReminderList.class, R.layout.cardview, ViewHolder.class, rDatabaseReference) {
             @Override
             protected void populateViewHolder(ViewHolder viewHolder, ReminderList reminderList, int position) {
 
@@ -70,6 +72,11 @@ public class ReminderFragment extends Fragment {
         rRecyclerView.setLayoutManager(reminderLayoutManager);
         rRecyclerView.setAdapter(firebaseRecyclerAdapter);
 
+
+
+
     }
+
+
 
 }
