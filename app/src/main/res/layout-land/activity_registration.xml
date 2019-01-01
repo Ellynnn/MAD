@@ -97,14 +97,15 @@
             android:layout_below="@+id/input_ruserid">
 
             <EditText
+                android:id="@+id/rEditphoneno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/rEditphoneno"
-                android:hint="Phone Number"
-                android:padding="15dp"
+                android:drawableLeft="@drawable/ic_phone_android_black_24dp"
                 android:drawablePadding="20dp"
-                android:paddingLeft="20dp"
-                android:drawableLeft="@drawable/ic_phone_android_black_24dp"/>
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:padding="15dp"
+                android:paddingLeft="20dp" />
 
         </android.support.design.widget.TextInputLayout>
 
