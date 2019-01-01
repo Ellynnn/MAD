@@ -18,9 +18,4 @@ public class UserAdapter {
         this.mUsers = mUsers;
     }
 
-    //@NonNull
-    //@Override
-    //public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i){
-    //    View view = LayoutInflater.from(mContext).inflate(R.layout)
-    //}
 }

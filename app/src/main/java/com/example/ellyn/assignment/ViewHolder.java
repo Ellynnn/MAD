@@ -15,6 +15,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         rview = itemView;
+
     }
 
     public void setDetails(Context context, String name, String category, String expirydate){
