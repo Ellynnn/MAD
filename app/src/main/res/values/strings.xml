@@ -32,4 +32,8 @@
     <string name="user_id">User ID</string>
     <string name="register_user_name">User Name</string>
     <string name="forgot_password">Forgot Password?</string>
+    <string name="lbl_forgot_password">Forgot Password?</string>
+    <string name="msg_forgot_password">Please enter your email to reset password!</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="btn_back"><![CDATA[<< Back]]></string>
 </resources>

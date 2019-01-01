@@ -23,7 +23,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class login extends AppCompatActivity {
     private EditText inputEmail, inputPassword;
-    private Button btnLogin,btnLinkRegister;
+    private Button btnLogin,btnLinkRegister,btnResetPassword;
     private FirebaseAuth auth;
     private ProgressBar progressBar;
 
@@ -48,6 +48,7 @@ public class login extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnLinkRegister = (Button) findViewById(R.id.btn_link_register);
+        btnResetPassword = (Button) findViewById(R.id.btn_link_forgotpassword);
 
         // Capture register button click
         btnLinkRegister.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +58,12 @@ public class login extends AppCompatActivity {
             }
         });
 
+        btnResetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(login.this, ResetPassword.class));
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
