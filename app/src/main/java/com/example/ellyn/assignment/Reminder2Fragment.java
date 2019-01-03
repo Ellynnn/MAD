@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -28,6 +30,7 @@ import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.N
 public class Reminder2Fragment extends Fragment {
 
     DatabaseReference databaseReminder;
+    FirebaseUser user;
 
     Button selectExpiryDate;
     TextView expiryDate;
@@ -37,6 +40,7 @@ public class Reminder2Fragment extends Fragment {
     Button clearButton;
     EditText foodName;
     Button confirmButton;
+    String userID;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,6 +57,8 @@ public class Reminder2Fragment extends Fragment {
         foodName = view.findViewById(R.id.reminder2entername);
         selectExpiryDate = view.findViewById(R.id.reminder2expirydatebutton);
         expiryDate = view.findViewById(R.id.reminder2selectexpirydate);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        userID = user.getUid();
 
         cancelButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -147,7 +153,8 @@ public class Reminder2Fragment extends Fragment {
         String expiry_date = expiryDate.getText().toString();
         String remind_at = remindAtSpinner.getSelectedItem().toString();
         String id = databaseReminder.push().getKey();
-        Reminder reminder = new Reminder(id, foodCategory, name, expiry_date, remind_at);
+        String user_id = user.getUid();
+        Reminder reminder = new Reminder(id, foodCategory, name, expiry_date, remind_at, user_id);
 
         databaseReminder.child(id).setValue(reminder);
     }
