@@ -33,9 +33,6 @@
         <activity android:name=".SecondActivity" android:configChanges="orientation"></activity>
         <activity android:name=".EditProfileActivity"></activity>
         <activity android:name=".ResetPassword"></activity>
-        <activity android:name=".SecondActivity" android:configChanges="orientation">
-        </activity>
-
     </application>
 
 </manifest>

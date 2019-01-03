@@ -70,11 +70,8 @@ public class ProfileFragment extends Fragment {
         editProfile.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                String btn = editProfile.getText().toString();
-
-                if (btn.equals("Edit Profile")){
-
-                }
+                Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -83,13 +80,11 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                getActivity().finish();
                 Intent intent = new Intent(getActivity(), login.class);
                 startActivity(intent);
             }
         });
         return view;
     }
-
 
 }
