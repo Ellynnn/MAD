@@ -71,7 +71,7 @@ public class Registration extends AppCompatActivity {
                     return;
                 }
                 if (TextUtils.isEmpty(username)) {
-                    Toast.makeText(getApplicationContext(), "Enter user ID!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Enter user name!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

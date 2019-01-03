@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBG"
-    tools:context="com.example.ellyn.assignment.login">
+    tools:context="com.example.ellyn.assignment.Registration">
 
     <RelativeLayout
         android:id="@+id/register1"
@@ -64,37 +64,16 @@
                 android:padding="15dp"
                 android:drawablePadding="20dp"
                 android:paddingLeft="20dp"
-                android:drawableLeft="@drawable/ic_person_outline_white_24dp"/>
+                android:drawableLeft="@drawable/ic_person_black_24dp"/>
 
         </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_ruserid"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/input_rusername">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/rEdituserid"
-                android:hint="@string/user_id"
-                android:padding="15dp"
-                android:drawablePadding="20dp"
-                android:paddingLeft="20dp"
-                android:drawableLeft="@drawable/ic_person_black_24dp"
-                />
-
-        </android.support.design.widget.TextInputLayout>
-
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_rphoneno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/input_ruserid">
+            android:layout_below="@+id/input_rusername">
 
             <EditText
                 android:id="@+id/rEditphoneno"
