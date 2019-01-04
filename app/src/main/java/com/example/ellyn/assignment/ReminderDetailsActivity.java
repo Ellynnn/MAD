@@ -12,7 +12,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class ReminderDetailsActivity extends AppCompatActivity {
 
     TextView rdName, rdCategory, rdExpiryDate, rdRemindAt, rdRemindDate;
-    Button btnCancel;
+    Button btnBack;
     DatabaseReference rDatabaseReference;
     FirebaseDatabase rFirebaseDatabase;
 
@@ -26,7 +26,7 @@ public class ReminderDetailsActivity extends AppCompatActivity {
         rdExpiryDate = findViewById(R.id.foodExpiryDate);
         rdRemindAt = findViewById(R.id.foodRemindAt);
         rdRemindDate = findViewById(R.id.foodRemindDate);
-        btnCancel = findViewById(R.id.cancelButton);
+        btnBack = findViewById(R.id.backButton);
         rFirebaseDatabase = FirebaseDatabase.getInstance();
         rDatabaseReference = rFirebaseDatabase.getReference("reminder");
 
@@ -43,7 +43,7 @@ public class ReminderDetailsActivity extends AppCompatActivity {
         rdRemindAt.setText(remind_at);
         rdRemindDate.setText(remind_date);
 
-        btnCancel.setOnClickListener(new View.OnClickListener() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ReminderDetailsActivity.this.finish();
