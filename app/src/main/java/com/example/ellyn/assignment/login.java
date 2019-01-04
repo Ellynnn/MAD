@@ -75,6 +75,14 @@ public class login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(!email.contains("@")) {
+                    Toast.makeText(getApplicationContext(), "Enter valid email address! (must include '@')", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(!email.contains(".com"))  {
+                    Toast.makeText(getApplicationContext(), "Enter valid email address! (must include '.com')", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if (TextUtils.isEmpty(password)) {
                     Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
