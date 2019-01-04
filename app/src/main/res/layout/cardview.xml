@@ -67,28 +67,6 @@
             android:layout_alignBaseline="@id/foodExpiryDateTitle"/>
     </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp">
-
-            <TextView
-                android:id="@+id/foodRemindAtTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="@string/remind_at" />
-
-            <TextView
-                android:id="@+id/foodRemindAt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:textSize="20dp"
-                android:layout_toRightOf="@id/foodRemindAtTitle"
-                android:layout_alignBaseline="@id/foodRemindAtTitle"/>
-        </RelativeLayout>
-
     </LinearLayout>
 
 </android.support.v7.widget.CardView>
