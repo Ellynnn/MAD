@@ -20,9 +20,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 @IgnoreExtraProperties
 public class Registration extends AppCompatActivity {
+
     private EditText inputrfullname, inputrusername, inputrphoneno , inputremail, inputrpassword;
     private Button  btnregister, btnlinklogin;
     private ProgressBar progressBar;
@@ -74,14 +76,25 @@ public class Registration extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Enter user name!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 if (TextUtils.isEmpty(phoneno)) {
-                    Toast.makeText(getApplicationContext(), "Enter phoneno!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Enter phone number!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (phoneno.length()<10 || phoneno.length()>11) {
+                    Toast.makeText(getApplicationContext(), "Enter valid phone number!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(!email.contains("@")) {
+                    Toast.makeText(getApplicationContext(), "Enter valid email address! (must include '@')", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(!email.contains(".com"))  {
+                    Toast.makeText(getApplicationContext(), "Enter valid email address! (must include '.com')", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -102,15 +115,14 @@ public class Registration extends AppCompatActivity {
                         .addOnCompleteListener(Registration.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                Toast.makeText(Registration.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Registration.this, "Account created!" , Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
                                 addUser();
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
                                 // signed in user can be handled in the listener.
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(Registration.this, "Authentication failed." + task.getException(),
-                                            Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Registration.this, "Authentication failed!" , Toast.LENGTH_SHORT).show();
                                 } else {
                                     startActivity(new Intent(Registration.this, login.class));
                                     finish();
@@ -121,6 +133,8 @@ public class Registration extends AppCompatActivity {
             }
         });
     }
+
+
     @Override
     protected void onResume() {
         super.onResume();

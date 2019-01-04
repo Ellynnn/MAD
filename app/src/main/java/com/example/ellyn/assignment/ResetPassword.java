@@ -63,6 +63,14 @@ public class ResetPassword extends AppCompatActivity {
                     Toast.makeText(getApplication(), "Enter your registered email id", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(!email.contains("@")) {
+                    Toast.makeText(getApplicationContext(), "Enter valid email address! (must include '@')", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(!email.contains(".com"))  {
+                    Toast.makeText(getApplicationContext(), "Enter valid email address! (must include '.com')", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 progressBar.setVisibility(View.VISIBLE);
                 auth.sendPasswordResetEmail(email)

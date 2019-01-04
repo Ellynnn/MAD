@@ -47,6 +47,8 @@ public class EditProfileActivity extends AppCompatActivity {
         updateEditPassword = (MaterialEditText) findViewById(R.id.updatePassword);
         btnSave = (Button) findViewById(R.id.save);
 
+
+
         editProfileUserRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

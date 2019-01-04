@@ -109,9 +109,10 @@ tools:context="com.example.ellyn.assignment.login">
 
     <ProgressBar
         android:id="@+id/progressBar"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/btn_link_register"
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="10dp"
