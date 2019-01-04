@@ -21,9 +21,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
@@ -41,6 +43,9 @@ public class Reminder2Fragment extends Fragment {
     EditText foodName;
     Button confirmButton;
     String userID;
+    Date foodExpiryDate;
+    Date remindDate;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -80,9 +85,19 @@ public class Reminder2Fragment extends Fragment {
                 datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        c.set(year, month, dayOfMonth);
+                        c.set(Calendar.YEAR, year);
+                        c.set(Calendar.MONTH, month);
+                        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        if(remindAtSpinner.getSelectedItem().equals("1 week before")) {
+                            remindDate = addDays(c.getTime(), -7);
+                        }
+                        else if(remindAtSpinner.getSelectedItem().equals("2 weeks before")) {
+                            remindDate = addDays(c.getTime(), -14);
+                        }
                         String date = new SimpleDateFormat("dd/MM/yyyy").format(c.getTime());
                         expiryDate.setText(date);
+
+
                     }
                 }, c_year, c_month, c_day);
                 datePickerDialog.show();
@@ -147,16 +162,24 @@ public class Reminder2Fragment extends Fragment {
         return view;
 
     }
-    private void addReminder() {
+    private void addReminder(){
         String foodCategory = categorySpinner.getSelectedItem().toString();
         String name = foodName.getText().toString().trim();
         String expiry_date = expiryDate.getText().toString();
         String remind_at = remindAtSpinner.getSelectedItem().toString();
+        String remind_date = new SimpleDateFormat("dd/MM/yyyy").format(remindDate);
         String id = databaseReminder.push().getKey();
         String user_id = user.getUid();
-        Reminder reminder = new Reminder(id, foodCategory, name, expiry_date, remind_at, user_id);
+        Reminder reminder = new Reminder(id, foodCategory, name, expiry_date, remind_at, remind_date, user_id);
 
         databaseReminder.child(id).setValue(reminder);
+    }
+
+    public static Date addDays(Date date, int days){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, days);
+        return cal.getTime();
     }
 
 }

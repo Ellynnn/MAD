@@ -6,16 +6,18 @@ public class ReminderList {
     private String expiryDate;
     private String remindAt;
     private String reminderID;
+    private String remindDate;
     private String userID;
 
     public ReminderList(){}
 
-    public ReminderList(String foodName, String foodCategory, String expiryDate, String remindAt, String reminderID, String userID) {
+    public ReminderList(String foodName, String foodCategory, String expiryDate, String remindAt, String reminderID, String remindDate, String userID) {
         this.foodName = foodName;
         this.foodCategory = foodCategory;
         this.expiryDate = expiryDate;
         this.remindAt = remindAt;
         this.reminderID = reminderID;
+        this.remindDate = remindDate;
         this.userID = userID;
     }
 
@@ -65,5 +67,13 @@ public class ReminderList {
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public String getRemindDate() {
+        return remindDate;
+    }
+
+    public void setRemindDate(String remindDate) {
+        this.remindDate = remindDate;
     }
 }

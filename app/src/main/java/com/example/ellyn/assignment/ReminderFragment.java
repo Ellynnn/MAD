@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +32,8 @@ public class ReminderFragment extends Fragment {
     FirebaseDatabase rFirebaseDatabase;
     DatabaseReference rDatabaseReference;
     LinearLayoutManager reminderLayoutManager;
+    FirebaseUser user;
+    String userID;
 
     @Nullable
     @Override
@@ -46,12 +50,16 @@ public class ReminderFragment extends Fragment {
             }
         });
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        userID = user.getUid();
+
         rRecyclerView = view.findViewById(R.id.reminderRecyclerView);
         rRecyclerView.setHasFixedSize(true);
         rRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         rFirebaseDatabase = FirebaseDatabase.getInstance();
         rDatabaseReference = rFirebaseDatabase.getReference("reminder");
+
 
         return view;
     }
@@ -61,10 +69,13 @@ public class ReminderFragment extends Fragment {
         super.onStart();
         final FirebaseRecyclerAdapter<ReminderList, ViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<ReminderList, ViewHolder>(ReminderList.class, R.layout.cardview, ViewHolder.class, rDatabaseReference) {
             @Override
-            protected void populateViewHolder(ViewHolder viewHolder, ReminderList reminderList, int position) {
+            protected void populateViewHolder(final ViewHolder viewHolder, ReminderList reminderList, int position) {
 
-                viewHolder.setDetails(getActivity().getApplicationContext(), reminderList.getFoodName(), reminderList.getFoodCategory(), reminderList.getExpiryDate());
-            }
+                            if(userID.equals(reminderList.getUserID())) {
+                                viewHolder.setDetails(getActivity().getApplicationContext(), reminderList.getFoodName(), reminderList.getFoodCategory(), reminderList.getExpiryDate());
+                            }
+
+                }
 
             @Override
             public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
@@ -110,7 +121,6 @@ public class ReminderFragment extends Fragment {
 
         rRecyclerView.setLayoutManager(reminderLayoutManager);
         rRecyclerView.setAdapter(firebaseRecyclerAdapter);
-
     }
 
     private void showDeleteDataDialog(final String currentName, String currentCategory, String currentExpiryDate, String currentRemindAt, final String currentID) {
@@ -146,6 +156,5 @@ public class ReminderFragment extends Fragment {
         });
         builder.create().show();
     }
-
 
 }

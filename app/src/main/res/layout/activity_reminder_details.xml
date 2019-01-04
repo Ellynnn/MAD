@@ -89,6 +89,28 @@
                 android:layout_alignBaseline="@id/foodRemindAtTitle"/>
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/foodRemindDateTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="@string/remind_date" />
+
+            <TextView
+                android:id="@+id/foodRemindDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textSize="20dp"
+                android:layout_toRightOf="@id/foodRemindDateTitle"
+                android:layout_alignBaseline="@id/foodRemindDateTitle"/>
+        </RelativeLayout>
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -6,16 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 public class ReminderDetailsActivity extends AppCompatActivity {
 
-    TextView rdName, rdCategory, rdExpiryDate, rdRemindAt;
+    TextView rdName, rdCategory, rdExpiryDate, rdRemindAt, rdRemindDate;
     Button btnCancel;
     DatabaseReference rDatabaseReference;
     FirebaseDatabase rFirebaseDatabase;
@@ -29,6 +25,7 @@ public class ReminderDetailsActivity extends AppCompatActivity {
         rdCategory = findViewById(R.id.foodCategory);
         rdExpiryDate = findViewById(R.id.foodExpiryDate);
         rdRemindAt = findViewById(R.id.foodRemindAt);
+        rdRemindDate = findViewById(R.id.foodRemindDate);
         btnCancel = findViewById(R.id.cancelButton);
         rFirebaseDatabase = FirebaseDatabase.getInstance();
         rDatabaseReference = rFirebaseDatabase.getReference("reminder");
@@ -37,11 +34,14 @@ public class ReminderDetailsActivity extends AppCompatActivity {
         String category = getIntent().getStringExtra("category");
         String expiry_date = getIntent().getStringExtra("expirydate");
         String remind_at = getIntent().getStringExtra("remindat");
+        String remind_date = getIntent().getStringExtra("reminddate");
+
 
         rdName.setText(name);
         rdCategory.setText(category);
         rdExpiryDate.setText(expiry_date);
         rdRemindAt.setText(remind_at);
+        rdRemindDate.setText(remind_date);
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
