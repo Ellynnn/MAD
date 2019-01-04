@@ -113,17 +113,9 @@
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/editButton"
-                android:text="@string/edit"
-                android:background="#43D786"
-                android:layout_margin="5dp"/>
-
-            <Button
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/cancelButton"
-                android:text="@string/cancel"
+                android:id="@+id/backButton"
+                android:text="@string/back"
                 android:background="#43D786"
                 android:layout_margin="5dp"/>
 
