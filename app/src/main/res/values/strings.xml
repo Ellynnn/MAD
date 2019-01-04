@@ -8,7 +8,6 @@
     <string name="remind_at">Remind At: </string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
-    <string name="back">Back</string>
     <string name="welcome">WELCOME TO FOOD SAVIOR!</string>
     <string name="user_name">User Name</string>
     <string name="phone_number">Phone Number</string>
@@ -39,4 +38,16 @@
     <string name="btn_back"><![CDATA[<< Back]]></string>
     <string name="edit">Edit</string>
     <string name="remind_date">Remind Date:</string>
+    <string name="description">We started Food Savior App because after investigation we found that nowadays has high food wastage. Society tend to buy more food than they actually need. Besides that, extra foods are thrown out before it has the chance to be consume due to the expiry date.
+        Thats why we offer services with foods expiry date reminder and food donation and request. Along the way, we will able to reduce the problems of high food wastage. We need to be more environmentally friendly and reduce food wastage.</string>
+    <string name="here">Here are our nearby locations :</string>
+    <string name="about_us">About Us</string>
+    <string name="location1">PT322, Jalan Sri Maju, 53300 Setapak, Kuala Lumpur.</string>
+    <string name="location2">Lot-20, Jalan Bunga Raya, 78890 Petaling Jaya, Selangor.</string>
+    <string name="location3">No58, Jalan Mahkota, 52500 Bukit Bintang, Kuala Lumpur.</string>
+    <string name="tel1">03-23456789</string>
+    <string name="email1">foodsavior@gmail.com</string>
+    <string name="tel2">03-22118000</string>
+    <string name="tel3">03-98387660</string>
+    <string name="back">Back</string>
 </resources>

@@ -36,6 +36,7 @@
             android:configChanges="orientation" />
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".ResetPassword" />
+        <activity android:name=".Location" />
         <activity android:name=".ReminderDetailsActivity"></activity>
     </application>
 
