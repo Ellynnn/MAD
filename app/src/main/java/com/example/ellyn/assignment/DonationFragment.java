@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -24,14 +25,14 @@ import java.util.ArrayList;
 
 public class DonationFragment extends Fragment {
 
-    Button takePictureButton;
-    ImageView imageView;
+    private Button takePictureButton;
+    private ImageView imageView;
     Uri file;
-    Spinner categorySpinner;
-    Button clearButton;
-    EditText foodName;
-    EditText foodQty;
-    Button confirmButton;
+    private Spinner categorySpinner;
+    private Button clearButton;
+    private EditText foodName;
+    private EditText foodQty;
+    private Button confirmButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){

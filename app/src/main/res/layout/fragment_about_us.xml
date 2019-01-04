@@ -1,13 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/aboutUsTitleSet">
 
     <TextView
+        android:id="@+id/aboutUsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About Us Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+        android:text="@string/about_us"
+        android:layout_margin="10dp"
+        android:textSize="20sp"/>
 
 </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/imageViewSet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aboutUsTitleSet">
+
+            <ImageView
+                android:id="@+id/aboutUsLogo"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/logo_horizontal"
+                android:layout_gravity="center_horizontal"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/aboutUsContentSet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageViewSet">
+
+            <TextView
+                android:id="@+id/aboutUsContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_margin="10dp"
+                android:text="@string/description"/>
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/LocationSet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/aboutUsContentSet">
+
+        <Button
+            android:id="@+id/btn_location"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:text="Our Service Center"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:layout_margin="10dp"/>
+
+    </RelativeLayout>
+
+    </RelativeLayout>
+</ScrollView>

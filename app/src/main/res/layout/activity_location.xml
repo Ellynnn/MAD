@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/textlocation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/Flocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/location1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                android:text="@string/location1"
+                android:textColor="#3797CF"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tel1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/ic_phone_black_24dp"
+                android:text="@string/tel1" />
+
+            <TextView
+                android:id="@+id/email1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/ic_email_black_24dp"
+                android:text="@string/email1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Slocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical"
+            android:layout_below="@+id/Flocation">
+
+            <TextView
+                android:id="@+id/location2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                android:text="@string/location2"
+                android:textColor="#3797CF"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tel2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/ic_phone_black_24dp"
+                android:text="@string/tel2" />
+
+            <TextView
+                android:id="@+id/email2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/ic_email_black_24dp"
+                android:text="@string/email1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Trlocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical"
+            android:layout_below="@+id/Slocation">
+
+            <TextView
+                android:id="@+id/location3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                android:text="@string/location3"
+                android:textColor="#3797CF"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tel3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/ic_phone_black_24dp"
+                android:text="@string/tel3" />
+
+            <TextView
+                android:id="@+id/email3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/ic_email_black_24dp"
+                android:text="@string/email1" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_locationback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/btn_back"
+            android:background="@color/colorBG"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:layout_below="@+id/Trlocation"/>
+
+
+    </RelativeLayout>
+
+</ScrollView>
