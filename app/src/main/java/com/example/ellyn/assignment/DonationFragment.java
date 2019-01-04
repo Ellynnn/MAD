@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,7 +83,7 @@ public class DonationFragment extends Fragment {
         confirmButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (foodName.getText().toString().matches("") || categorySpinner.getSelectedItemPosition() == 0 || foodQty.getText().toString().matches("") ){
+                if (TextUtils.isEmpty(foodName.getText().toString()) || categorySpinner.getSelectedItemPosition() == 0 || foodQty.getText().toString().matches("") ){
                     AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
                     alertBuilder.setMessage("Please fill in the blanks!").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
@@ -93,12 +94,20 @@ public class DonationFragment extends Fragment {
                     AlertDialog alert = alertBuilder.create();
                     alert.setTitle("Error!");
                     alert.show();
+                    if (TextUtils.isEmpty(foodName.getText().toString())){
+                        foodName.setError("Please enter food name.");
+                    }
+                    else if(foodQty.getText().toString().matches("")){
+                        foodQty.setError("Please enter the quantity.");
+                    }
+                    else{
+                        Toast.makeText( getActivity(), "PLease select food category.", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 else{
-                    final Toast toast = Toast.makeText( getActivity(), "Thank you for your donation!! We have receive your request. " +
-                            "Please send it to the nearby centre.", Toast.LENGTH_LONG);
-                    toast.show();
+                    Toast.makeText( getActivity(), "Thank you for your donation!! We have receive your request. " +
+                            "Please send it to the nearby centre.", Toast.LENGTH_LONG).show();
 
                     foodName.getText().clear();
                     foodQty.getText().clear();
