@@ -73,11 +73,35 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/reminder2remindatset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reminder2nameset"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/reminder2remindat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remind_at"
+            android:textSize="15dp"
+            android:layout_margin="15dp"/>
+
+        <Spinner
+            android:id="@+id/reminder2remindatspinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/reminder2remindat"
+            android:layout_margin="15dp"
+            android:layout_alignBaseline="@id/reminder2remindat"/>
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/reminder2expirydateset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_below="@id/reminder2nameset">
+        android:layout_below="@id/reminder2remindatset">
 
         <TextView
             android:id="@+id/reminder2expirydate"
@@ -85,7 +109,7 @@
             android:layout_height="wrap_content"
             android:text="@string/expiry_date"
             android:layout_margin="15dp"
-            android:textSize="20dp" />
+            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/reminder2selectexpirydate"
@@ -94,7 +118,7 @@
             android:text="@string/select_expiry_date"
             android:layout_toRightOf="@id/reminder2expirydate"
             android:layout_margin="15dp"
-            android:textSize="20dp"/>
+            android:textSize="15dp"/>
 
         <Button
             android:id="@+id/reminder2expirydatebutton"
@@ -105,35 +129,12 @@
             android:layout_centerInParent="true"/>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/reminder2remindatset"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/reminder2expirydateset"
-        android:layout_centerInParent="true">
-
-        <TextView
-            android:id="@+id/reminder2remindat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/remind_at"
-            android:textSize="20dp"
-            android:layout_margin="15dp"/>
-
-        <Spinner
-            android:id="@+id/reminder2remindatspinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/reminder2remindat"
-            android:layout_margin="15dp"
-            android:layout_alignBaseline="@id/reminder2remindat" />
-    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/reminder2buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/reminder2remindatset"
+        android:layout_below="@id/reminder2expirydateset"
         android:layout_centerInParent="true"
         android:layout_margin="15dp">
 
@@ -151,23 +152,22 @@
             android:id="@+id/reminder2confirmbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button"
-            android:text="@string/confirm"
-            android:textSize="15dp"
             android:layout_margin="10dp"
-            android:layout_centerInParent="true"/>
+            android:background="@drawable/rounded_button"
+            android:layout_centerInParent="true"
+            android:text="@string/confirm"
+            android:textSize="15dp" />
 
         <Button
             android:id="@+id/reminder2cancelbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_toRightOf="@id/reminder2confirmbutton"
             android:background="@drawable/rounded_button"
             android:backgroundTint="#48FC9A"
             android:text="@string/cancel"
-            android:textSize="15dp"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:textSize="15dp" />
 
     </RelativeLayout>
 </RelativeLayout>
