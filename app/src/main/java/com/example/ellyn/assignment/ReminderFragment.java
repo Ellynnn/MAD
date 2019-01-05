@@ -84,10 +84,7 @@ public class ReminderFragment extends Fragment {
         final FirebaseRecyclerAdapter<ReminderList, ViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<ReminderList, ViewHolder>(ReminderList.class, R.layout.cardview, ViewHolder.class, rDatabaseReference) {
             @Override
             protected void populateViewHolder(final ViewHolder viewHolder, ReminderList reminderList, int position) {
-
-                if (userID.equals(reminderList.getUserID())) {
                     viewHolder.setDetails(getActivity().getApplicationContext(), reminderList.getFoodName(), reminderList.getFoodCategory(), reminderList.getExpiryDate());
-                }
 
             }
 
